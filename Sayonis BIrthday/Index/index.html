@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Sayoni! 🐾</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&family=Quicksand:wght@500;700&display=swap');
+
+        :root {
+            --bg-color: #fff0f5;
+            --primary-pink: #ffb6c1;
+            --dark-pink: #ff69b4;
+            --text-color: #5a4a4a;
+        }
+
+        body {
+            margin: 0; padding: 0; height: 100vh; overflow: hidden;
+            font-family: 'Quicksand', sans-serif; color: var(--text-color);
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #fffafa 100%);
+            display: flex; justify-content: center; align-items: center; text-align: center;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20">🐾</text></svg>'), auto;
+        }
+
+        .bg-cat {
+            position: absolute; font-size: 30px; opacity: 0.15;
+            pointer-events: none; animation: floatUp linear infinite; z-index: 1;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(-15deg); opacity: 0; }
+            10% { opacity: 0.2; } 90% { opacity: 0.2; }
+            100% { transform: translateY(-10vh) rotate(15deg); opacity: 0; }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: var(--dark-pink);
+            text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.3); margin-bottom: 10px;
+            position: relative; z-index: 10;
+        }
+        p { font-size: 1.3rem; line-height: 1.8; max-width: 600px; margin: 10px auto; position: relative; z-index: 10;}
+        .highlight { color: var(--dark-pink); font-weight: bold; }
+
+        .section {
+            display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+            flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 1s ease-in-out; padding: 20px; box-sizing: border-box;
+            z-index: 10;
+        }
+        .section.active { display: flex; opacity: 1; }
+
+        .heart-btn {
+            font-size: 90px; background: none; border: none; cursor: pointer;
+            animation: bounceCat 2s infinite; filter: drop-shadow(0 10px 15px rgba(255,105,180,0.4));
+            position: relative; z-index: 10;
+        }
+        @keyframes bounceCat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        #cat-walker-container {
+            position: relative; left: -100vw; margin-top: 50px;
+            cursor: pointer; transition: transform 0.3s; z-index: 20;
+        }
+        #cat-walker-container.walking { animation: walkIn 4s ease-out forwards; }
+        @keyframes walkIn { 0% { left: -100vw; } 100% { left: 0; } }
+        #cat-walker-container:hover { transform: scale(1.1); }
+
+        .cute-cat-emoji { 
+            font-size: 150px; line-height: 1; display: inline-block;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); 
+            animation: littleBounce 0.4s infinite alternate;
+        }
+        @keyframes littleBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
+        .cake-overlay {
+            position: absolute; top: -80px; left: 50%; font-size: 70px;
+            transform: translateX(-50%); animation: floatCake 2s infinite alternate;
+        }
+        @keyframes floatCake { 0% { top: -75px; } 100% { top: -85px; } }
+
+        .wild-cat { 
+            position: absolute; font-size: 60px; 
+            animation: popUp 0.5s ease-out forwards, spinDance 2s infinite linear 0.5s; opacity: 0;
+        }
+        @keyframes popUp { 0% { transform: scale(0) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+        @keyframes spinDance {
+            0% { transform: rotate(0deg) translateY(0); } 25% { transform: rotate(15deg) translateY(-20px); }
+            50% { transform: rotate(0deg) translateY(0); } 75% { transform: rotate(-15deg) translateY(-20px); }
+            100% { transform: rotate(0deg) translateY(0); }
+        }
+
+        /* --- FIX: ADDED WIDTH TO WRAPPER SO IT DOESN'T SQUISH --- */
+        .media-wrapper { 
+            position: relative; 
+            margin-top: 30px; 
+            width: 360px; 
+            max-width: 90vw; 
+        }
+        
+        .cat-ear {
+            position: absolute; top: -35px; width: 0; height: 0;
+            border-left: 35px solid transparent; border-right: 35px solid transparent; border-bottom: 50px solid var(--primary-pink);
+            z-index: 5; filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.1));
+        }
+        .cat-ear::after {
+            content: ''; position: absolute; top: 15px; left: -15px; width: 0; height: 0;
+            border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 30px solid #fff0f5;
+        }
+        .ear-left { left: 15px; transform: rotate(-20deg); }
+        .ear-right { right: 15px; transform: rotate(20deg); }
+
+        .media-container {
+            width: 100%; height: 65vh; max-height: 600px; position: relative;
+            background: #000000; /* Black background makes photos pop! */
+            border-radius: 25px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 8px solid var(--primary-pink);
+            z-index: 10;
+        }
+        .slide {
+            width: 100%; height: 100%; 
+            object-fit: contain; /* Keeps her entire photo visible without cutting anything! */
+            position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s;
+            z-index: 1; 
+        }
+        .slide.active { opacity: 1; z-index: 2; }
+        
+        #play-video-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 80px; color: white; cursor: pointer; z-index: 100;
+            display: none; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+            animation: bounceCat 2s infinite;
+        }
+
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="../Mewo/Meow meow.m4a" type="audio/mp4">
+    </audio>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div id="bg-cats-container"></div>
+
+    <div id="sec1" class="section active">
+        <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem;">A beautiful surprise for...</h2>
+        <h1>Sayoni 🐾</h1>
+        <button class="heart-btn" onclick="startExperience()">😻</button>
+        <p class="highlight">Tap the happy cat to open!</p>
+    </div>
+
+    <div id="sec2" class="section">
+        <h1>Happy Birthday, Sayoni! ✨</h1>
+        <p>Your smile lights up the world. You are the absolute cutest!</p>
+        <p class="highlight" style="font-size: 1.5rem;">Tap the cake below to make your wish!</p>
+        
+        <div id="cat-walker-container" onclick="cutCake()">
+            <div class="cake-overlay">🎂</div>
+            <div class="cute-cat-emoji">🐈</div>
+        </div>
+    </div>
+
+    <div id="sec3" class="section">
+        <h1 style="font-size: 5rem;">Meow! 🎉</h1>
+        <p class="highlight">Wish Granted! Time for Sayoni's memories...</p>
+    </div>
+
+    <div id="sec4" class="section">
+        <h2 style="font-family: 'Dancing Script'; font-size: 3rem; color: var(--dark-pink); margin-bottom: 5px;">Your Memories...</h2>
+        
+        <div class="media-wrapper">
+            <div class="cat-ear ear-left"></div>
+            <div class="cat-ear ear-right"></div>
+            
+            <div class="media-container">
+                <div id="play-video-btn" onclick="playVideo()">▶️🐾</div>
+                <img class="slide" src="images/s1.jpeg" alt="Sayoni 1">
+                <img class="slide" src="images/s2.jpeg" alt="Sayoni 2">
+                <img class="slide" src="images/s3.jpeg" alt="Sayoni 3">
+                <img class="slide" src="images/s4.jpeg" alt="Sayoni 4">
+                <img class="slide" src="images/s5.jpeg" alt="Sayoni 5">
+                
+                <video class="slide" id="sayoni-video" src="../Video/ye video.mp4" playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function createBackgroundCats() {
+            const container = document.getElementById('bg-cats-container');
+            const catIcons = ['🐾', '😸', '😽', '😻', '🤍'];
+            for(let i=0; i<15; i++) {
+                let cat = document.createElement('div');
+                cat.className = 'bg-cat';
+                cat.innerText = catIcons[Math.floor(Math.random() * catIcons.length)];
+                cat.style.left = Math.random() * 100 + 'vw';
+                cat.style.animationDuration = (Math.random() * 10 + 10) + 's'; 
+                cat.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(cat);
+            }
+        }
+        createBackgroundCats();
+
+        function switchSection(hideId, showId) {
+            document.getElementById(hideId).style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById(hideId).classList.remove('active');
+                document.getElementById(showId).classList.add('active');
+                setTimeout(() => { document.getElementById(showId).style.opacity = '1'; }, 50);
+            }, 1000);
+        }
+
+        function startExperience() {
+            let music = document.getElementById('bg-music');
+            music.volume = 0.8; 
+            music.play().catch(e => console.log("Audio autoplay prevented."));
+
+            switchSection('sec1', 'sec2');
+            setTimeout(() => {
+                document.getElementById('cat-walker-container').classList.add('walking');
+            }, 1200);
+        }
+
+        function cutCake() {
+            confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+            switchSection('sec2', 'sec3');
+            
+            const partyScreen = document.getElementById('sec3');
+            const partyCats = ['😹', '😻', '🐈', '✨', '🎈', '😸'];
+            for(let i=0; i<25; i++) {
+                let cat = document.createElement('div');
+                cat.className = 'wild-cat';
+                cat.innerText = partyCats[Math.floor(Math.random() * partyCats.length)];
+                cat.style.left = (Math.random() * 80 + 10) + 'vw';
+                cat.style.top = (Math.random() * 80 + 10) + 'vh';
+                cat.style.animationDelay = (Math.random() * 0.5) + 's, ' + (Math.random() + 0.5) + 's';
+                partyScreen.appendChild(cat);
+            }
+
+            setTimeout(() => {
+                switchSection('sec3', 'sec4');
+                startSlideshow();
+            }, 5500);
+        }
+
+        function startSlideshow() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const playBtn = document.getElementById('play-video-btn');
+            
+            slides[0].classList.add('active'); 
+            
+            const slideInterval = setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                
+                if(currentSlide < slides.length) {
+                    slides[currentSlide].classList.add('active');
+                    
+                    if(slides[currentSlide].tagName.toLowerCase() === 'video') {
+                        clearInterval(slideInterval);
+                        playBtn.style.display = 'block'; 
+                    }
+                }
+            }, 4500); 
+        }
+
+        function playVideo() {
+            document.getElementById('play-video-btn').style.display = 'none';
+            let video = document.getElementById('sayoni-video');
+            document.getElementById('bg-music').volume = 0.1; 
+            video.play();
+            video.controls = true;
+        }
+
+        const cursorItems = ['🐾', '💖', '✨', '😸'];
+        document.addEventListener('mousemove', function(e) {
+            if(Math.random() > 0.85) { 
+                let item = document.createElement('div');
+                item.innerText = cursorItems[Math.floor(Math.random() * cursorItems.length)];
+                item.style.position = 'fixed';
+                item.style.left = (e.pageX + 10) + 'px'; 
+                item.style.top = (e.pageY + 10) + 'px';
+                item.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                item.style.pointerEvents = 'none';
+                item.style.zIndex = '9999';
+                item.style.transition = 'opacity 1s, transform 1s';
+                document.body.appendChild(item);
+                
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = `translateY(${Math.random() * -30 - 10}px) rotate(${Math.random() * 40 - 20}deg)`;
+                }, 50);
+                setTimeout(() => item.remove(), 1050);
+            }
+        });
+    </script>
+</body>
+</html>
